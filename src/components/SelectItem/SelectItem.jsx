@@ -1,8 +1,12 @@
+import { nanoid } from 'nanoid';
 const SelectItem = ({ props }) => {
-  return props.map(prop => (
-    <option key={prop.number} value={prop.number}>
-      {prop.code}
-    </option>
-  ));
+  return (
+    props &&
+    props.map(prop => (
+      <option key={prop.name} value={prop.number}>
+        {prop.code}
+      </option>
+    ))
+  );
 };
 export default SelectItem;
