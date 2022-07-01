@@ -1,0 +1,43 @@
+.div {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  max-width: 430px;
+  border: 1px solid;
+  background-color: white;
+}
+.form {
+  justify-content: center;
+  text-align: center;
+}
+.selectForm {
+  width: 80px;
+  text-align: center;
+}
+.title {
+  margin-bottom: 10px;
+}
+.text {
+  margin-bottom: 15px;
+}
+.typeSearchInput {
+  width: 100px;
+  margin-right: 5px;
+}
+
+.containerFormSelect {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.divBtn {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  text-align: center;
+}
+.btn {
+  width: 150px;
+  height: 50px;
+}
