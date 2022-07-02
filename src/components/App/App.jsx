@@ -170,7 +170,6 @@ export const App = () => {
         </div>
       </div>
 
-      <hr />
       {/* (
         <UpdateTime
           propAsksGarantex={asksGarantex}
