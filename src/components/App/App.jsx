@@ -78,7 +78,7 @@ export const App = () => {
     );
   };
   useEffect(() => {
-    INTERVAL_GARANTEX = setInterval(async () => {
+    setInterval(async () => {
       const { data } = await FetchGarantexApi();
       setAsksGarantex(data.asks.splice(0, 20));
       setBidsGarantex(data.bids.splice(0, 20));
