@@ -166,7 +166,7 @@ export const App = () => {
       <div className={s.divContainer} style={{ opacity: 0.2 }}>
         <div className={s.divGarantexIMG}></div>
         <div className={s.divBox}>
-          <h2>Завтра постараюсь сделать "стаканы"</h2>
+          <h2>Завтра может сделаю "стаканы", если получится</h2>
         </div>
         {/* <form className={s.form} onSubmit={handlerSumbit}>
           <div className={s.divImg} />
