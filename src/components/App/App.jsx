@@ -6,6 +6,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import FetchContactApi from 'service/FetchContactApi';
 import FetchGarantexApi from 'service/FetchGarantexApi';
 import TableGarantex from 'components/TableGarantex';
+import Loader from 'components/Loader';
 
 //Notify options
 Notify.init({
@@ -82,7 +83,7 @@ export const App = () => {
       const { data } = await FetchGarantexApi();
       setAsksGarantex(data.asks.splice(0, 20));
       setBidsGarantex(data.bids.splice(0, 20));
-    }, 5000);
+    }, 3000);
   }, []);
   return (
     <>
@@ -93,7 +94,7 @@ export const App = () => {
             <div className={s.divContactIMG} />
 
             <p className={s.text}>
-              {mainValueCurrency &&
+              {mainValueCurrency ? (
                 ` ${
                   currenciesArr.find(
                     curr => curr.number === mainValueCurrency.from && curr
@@ -105,7 +106,10 @@ export const App = () => {
                 } получаем +-${mainValueCurrency.rate} с комиссией +-${(
                   mainValueCurrency.rate +
                   mainValueCurrency.rate * (0.0061637 / 100) * 100
-                ).toFixed(2)}`}
+                ).toFixed(2)}`
+              ) : (
+                <Loader />
+              )}
             </p>
             <span
               style={{
@@ -187,16 +191,22 @@ export const App = () => {
         </div> */}
 
         <div className={s.tableContainer}>
-          <TableGarantex
-            props={asksGarantex}
-            title={'Продажа'}
-            name={'asksGarantex'}
-          />
-          <TableGarantex
-            props={bidsGarantex}
-            title={'Покупка'}
-            name={'bidsGarantex'}
-          />
+          {asksGarantex && bidsGarantex ? (
+            <>
+              <TableGarantex
+                props={asksGarantex}
+                title={'Продажа'}
+                name={'asksGarantex'}
+              />
+              <TableGarantex
+                props={bidsGarantex}
+                title={'Покупка'}
+                name={'bidsGarantex'}
+              />
+            </>
+          ) : (
+            <Loader />
+          )}
         </div>
       </div>
     </>
