@@ -182,9 +182,9 @@ export const App = () => {
       {/* GARANTEX */}
       <div className={s.divContainer}>
         <div className={s.divGarantexIMG}></div>
-        <div className={s.divBox}>
+        {/* <div className={s.divBox}>
           <h2>Завтра может сделаю "стаканы", если получится</h2>
-        </div>
+        </div> */}
 
         <div className={s.tableContainer}>
           <TableGarantex
