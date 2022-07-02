@@ -79,6 +79,7 @@ export const App = () => {
 
   return (
     <>
+      {/* Contact */}
       <div className={s.div}>
         <form className={s.form} onSubmit={handlerSumbit}>
           <div className={s.divContact} />
@@ -98,6 +99,17 @@ export const App = () => {
                 mainValueCurrency.rate * (0.0061637 / 100) * 100
               ).toFixed(2)}`}
           </p>
+          <span
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              color: 'red',
+              opacity: 0.4,
+              marginBottom: 15,
+            }}
+          >
+            Погрешность RUB/USD = +-0.10 - 0.12
+          </span>
           <div className={s.containerFormSelect}>
             <div className={s.formFrom}>
               <label htmlFor="inputFrom" className={s.label}>
@@ -108,6 +120,8 @@ export const App = () => {
                 type="text"
                 name="inputFrom"
                 id="inputFrom"
+                autocomplete="off"
+                placeholder="RUB, USD..."
                 pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 onChange={handlerChangeInput}
               />
@@ -126,6 +140,9 @@ export const App = () => {
                 name="inputTo"
                 id="inputTo"
                 onChange={handlerChangeInput}
+                autocomplete="off"
+                placeholder="RUB, USD..."
+                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               />
               <select className={s.selectForm} name="selectTo">
                 <SelectItem props={getVisibleCurrencyTo()} />
@@ -142,7 +159,9 @@ export const App = () => {
 
       <hr />
 
-      <div className={s.div}>
+      {/* GARANTEX */}
+
+      <div className={s.div} style={{ opacity: 0.2 }}>
         <div className={s.divGarantex}></div>
         <h2>Завтра постараюсь сделать "стаканы"</h2>
         {/* <form className={s.form} onSubmit={handlerSumbit}>

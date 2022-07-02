@@ -21,8 +21,14 @@
   margin-bottom: 15px;
 }
 .typeSearchInput {
+  border-radius: 5px;
+  border: 1px solid black;
   width: 100px;
   margin-right: 5px;
+}
+.selectForm {
+  border-radius: 5px;
+  border: 1px solid black;
 }
 .label {
   margin-right: 5px;
