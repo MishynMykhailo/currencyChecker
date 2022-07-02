@@ -60,7 +60,7 @@ export const App = () => {
           String(res.to) === String(currencyTo) &&
           setMainValueCurrency(res)
       );
-    }, 5000);
+    }, 1000);
   }, [currencyFrom, currencyTo]);
 
   const getVisibleCurrencyFrom = () => {
