@@ -1,0 +1,43 @@
+.containerFormSelect {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.divBtn {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  text-align: center;
+}
+/* Текст  */
+.selectForm {
+  width: 80px;
+  text-align: center;
+}
+.title {
+  margin-bottom: 10px;
+}
+.text {
+  margin-bottom: 15px;
+}
+
+.btn {
+  width: 150px;
+  height: 50px;
+  border: none;
+  font-family: 'Rubik', sans-serif;
+  background-color: rgb(255, 166, 0);
+  border-radius: 15px;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 4px 4px 8px 0 rgb(34 60 80 / 20%);
+}
+.btn:hover,
+.btn:focus {
+  /* background-color: rgb(255, 145, 0); */
+  background-color: rgb(228, 149, 46);
+}

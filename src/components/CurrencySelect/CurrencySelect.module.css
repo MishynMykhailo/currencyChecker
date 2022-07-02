@@ -1,0 +1,18 @@
+.typeSearchInput {
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 80px;
+  margin-right: 5px;
+}
+.selectForm {
+  border-radius: 5px;
+  border: 1px solid black;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.selectForm:hover,
+.selectForm:focus {
+  background-color: rgba(233, 233, 233, 0.795);
+}
+.label {
+  margin-right: 5px;
+}

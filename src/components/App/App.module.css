@@ -1,79 +1,8 @@
-.divContainer {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 430px;
-  border: 1px solid rgba(0, 0, 0, 0.356);
-  background-color: white;
-  box-shadow: 4px 4px 8px 0 rgb(34 60 80 / 20%);
-  margin-bottom: 20px;
-}
-.divBox {
-  padding: 20px;
-}
-.form {
-  justify-content: center;
-  text-align: center;
-}
-.selectForm {
-  width: 80px;
-  text-align: center;
-}
-.title {
-  margin-bottom: 10px;
-}
-.text {
-  margin-bottom: 15px;
-}
-.typeSearchInput {
-  border-radius: 5px;
-  border: 1px solid black;
-  width: 80px;
-  margin-right: 5px;
-}
-.selectForm {
-  border-radius: 5px;
-  border: 1px solid black;
-}
-.label {
-  margin-right: 5px;
-}
-.containerFormSelect {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-}
-.divBtn {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-  text-align: center;
-}
-.btn {
-  width: 150px;
-  height: 50px;
-  border: none;
-  font-family: 'Rubik', sans-serif;
-  background-color: rgb(255, 166, 0);
-  border-radius: 15px;
-  font-size: 20px;
-  color: rgb(255, 255, 255);
-  font-weight: 500;
-  text-transform: uppercase;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 4px 4px 8px 0 rgb(34 60 80 / 20%);
-}
-.btn:hover {
-  /* background-color: rgb(255, 145, 0); */
-  background-color: rgb(228, 149, 46);
-}
 .divContactIMG {
   background-image: url(../../contactLogo.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: left;
-  margin-bottom: 15px;
-
   height: 70px;
 }
 .divGarantexIMG {
@@ -82,10 +11,9 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: left;
-  height: 50px;
+  height: 40px;
 }
-.tableContainer {
+.containerGarantexTable {
   display: flex;
-  padding: 15px;
   justify-content: space-between;
 }

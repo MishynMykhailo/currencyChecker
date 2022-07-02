@@ -1,7 +1,11 @@
 @import-normalize; /* bring in normalize.css styles */
-
 body {
   margin: 0;
+  background-image: linear-gradient(
+    to right,
+    rgba(80, 80, 80, 0.616),
+    rgba(138, 85, 15, 0.445)
+  );
   background-color: rgb(231, 236, 242);
   font-family: 'Rubik', sans-serif;
   -webkit-font-smoothing: antialiased;
