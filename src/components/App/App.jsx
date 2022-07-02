@@ -80,90 +80,94 @@ export const App = () => {
   return (
     <>
       {/* Contact */}
-      <div className={s.div}>
-        <form className={s.form} onSubmit={handlerSumbit}>
-          <div className={s.divContact} />
+      <div className={s.divContainer}>
+        <div className={s.divBox}>
+          <form className={s.form} onSubmit={handlerSumbit}>
+            <div className={s.divContactIMG} />
 
-          <p className={s.text}>
-            {mainValueCurrency &&
-              ` ${
-                currenciesArr.find(
-                  curr => curr.number === mainValueCurrency.from && curr
-                ).code
-              } к ${
-                currenciesArr.find(
-                  curr => curr.number === mainValueCurrency.to && curr
-                ).code
-              } получаем +-${mainValueCurrency.rate} с комиссией +-${(
-                mainValueCurrency.rate +
-                mainValueCurrency.rate * (0.0061637 / 100) * 100
-              ).toFixed(2)}`}
-          </p>
-          <span
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              color: 'red',
-              opacity: 0.4,
-              marginBottom: 15,
-            }}
-          >
-            Погрешность RUB/USD = +-0.10 - 0.12
-          </span>
-          <div className={s.containerFormSelect}>
-            <div className={s.formFrom}>
-              <label htmlFor="inputFrom" className={s.label}>
-                Из
-              </label>
-              <input
-                className={s.typeSearchInput}
-                type="text"
-                name="inputFrom"
-                id="inputFrom"
-                autocomplete="off"
-                placeholder="RUB, USD..."
-                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                onChange={handlerChangeInput}
-              />
+            <p className={s.text}>
+              {mainValueCurrency &&
+                ` ${
+                  currenciesArr.find(
+                    curr => curr.number === mainValueCurrency.from && curr
+                  ).code
+                } к ${
+                  currenciesArr.find(
+                    curr => curr.number === mainValueCurrency.to && curr
+                  ).code
+                } получаем +-${mainValueCurrency.rate} с комиссией +-${(
+                  mainValueCurrency.rate +
+                  mainValueCurrency.rate * (0.0061637 / 100) * 100
+                ).toFixed(2)}`}
+            </p>
+            <span
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                color: 'red',
+                opacity: 0.4,
+                marginBottom: 15,
+              }}
+            >
+              Погрешность RUB/USD = +-0.10 - 0.12
+            </span>
+            <div className={s.containerFormSelect}>
+              <div className={s.formFrom}>
+                <label htmlFor="inputFrom" className={s.label}>
+                  Из
+                </label>
+                <input
+                  className={s.typeSearchInput}
+                  type="text"
+                  name="inputFrom"
+                  id="inputFrom"
+                  autocomplete="off"
+                  placeholder="RUB, USD..."
+                  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                  onChange={handlerChangeInput}
+                />
 
-              <select className={s.selectForm} name="selectFrom">
-                <SelectItem props={getVisibleCurrencyFrom()} />
-              </select>
+                <select className={s.selectForm} name="selectFrom">
+                  <SelectItem props={getVisibleCurrencyFrom()} />
+                </select>
+              </div>
+              <div className={s.formTo}>
+                <label htmlFor="inputTo" className={s.label}>
+                  В
+                </label>
+                <input
+                  className={s.typeSearchInput}
+                  type="text"
+                  name="inputTo"
+                  id="inputTo"
+                  onChange={handlerChangeInput}
+                  autocomplete="off"
+                  placeholder="RUB, USD..."
+                  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                />
+                <select className={s.selectForm} name="selectTo">
+                  <SelectItem props={getVisibleCurrencyTo()} />
+                </select>
+              </div>
             </div>
-            <div className={s.formTo}>
-              <label htmlFor="inputTo" className={s.label}>
-                В
-              </label>
-              <input
-                className={s.typeSearchInput}
-                type="text"
-                name="inputTo"
-                id="inputTo"
-                onChange={handlerChangeInput}
-                autocomplete="off"
-                placeholder="RUB, USD..."
-                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              />
-              <select className={s.selectForm} name="selectTo">
-                <SelectItem props={getVisibleCurrencyTo()} />
-              </select>
+            <div className={s.divBtn}>
+              <button type="submit" className={s.btn}>
+                Submit
+              </button>
             </div>
-          </div>
-          <div className={s.divBtn}>
-            <button type="submit" className={s.btn}>
-              Submit
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
 
       <hr />
 
       {/* GARANTEX */}
 
-      <div className={s.div} style={{ opacity: 0.2 }}>
-        <div className={s.divGarantex}></div>
-        <h2>Завтра постараюсь сделать "стаканы"</h2>
+      <div className={s.divContainer} style={{ opacity: 0.2 }}>
+        <div className={s.divGarantexIMG}></div>
+        <div className={s.divBox}>
+          <h2>Завтра постараюсь сделать "стаканы"</h2>
+        </div>
         {/* <form className={s.form} onSubmit={handlerSumbit}>
           <div className={s.divImg} />
 
