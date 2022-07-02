@@ -6,7 +6,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import FetchContactApi from 'service/FetchContactApi';
 import FetchGarantexApi from 'service/FetchGarantexApi';
 import TableGarantex from 'components/TableGarantex';
-import UpdateTime from 'service/UpdateTime';
+
 //Notify options
 Notify.init({
   width: '300px',
@@ -17,7 +17,6 @@ Notify.init({
 });
 
 let INTERVAL_CONTACT = null;
-let INTERVAL_GARANTEX = null;
 
 export const App = () => {
   const [currenciesArr] = useState(currencies);
@@ -61,7 +60,7 @@ export const App = () => {
           String(res.to) === String(currencyTo) &&
           setMainValueCurrency(res)
       );
-    }, 1000);
+    }, 5000);
   }, [currencyFrom, currencyTo]);
 
   const getVisibleCurrencyFrom = () => {
