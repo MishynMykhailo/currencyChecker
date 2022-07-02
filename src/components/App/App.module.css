@@ -62,7 +62,7 @@
 .btn:hover {
   background-color: rgb(255, 145, 0);
 }
-.Contact {
+.divContact {
   background-image: url(../../contactLogo.svg);
   background-repeat: no-repeat;
   background-size: contain;
