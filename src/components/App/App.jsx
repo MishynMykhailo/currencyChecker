@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import s from '../App/App.module.css';
 import currencies from '../../service/currenciesID.json';
 import SelectItem from 'components/SelectItem';
-import FetchApi from 'service/FetchApi';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
+import FetchContactApi from 'service/FetchContactApi';
+import FetchGarantexApi from 'service/FetchGarantexApi';
+import TableGarantex from 'components/TableGarantex';
+import UpdateTime from 'service/UpdateTime';
 //Notify options
 Notify.init({
   width: '300px',
@@ -14,7 +16,8 @@ Notify.init({
   timeout: 2000,
 });
 
-let INTERVAL;
+let INTERVAL_CONTACT = null;
+let INTERVAL_GARANTEX = null;
 
 export const App = () => {
   const [currenciesArr] = useState(currencies);
@@ -23,7 +26,8 @@ export const App = () => {
   const [currencyFrom, setCurrencyFrom] = useState('643');
   const [currencyTo, setCurrencyTo] = useState('840');
   const [mainValueCurrency, setMainValueCurrency] = useState(null);
-
+  const [asksGarantex, setAsksGarantex] = useState(null);
+  const [bidsGarantex, setBidsGarantex] = useState(null);
   const handlerSumbit = e => {
     e.preventDefault();
     if (
@@ -48,21 +52,18 @@ export const App = () => {
   };
 
   useEffect(() => {
-    clearInterval(INTERVAL);
-    if (currencyFrom && currencyTo) {
-      clearInterval(INTERVAL);
-      INTERVAL = setInterval(() => {
-        return FetchApi({ currencyFrom, currencyTo }).then(({ result }) => {
-          result.filter(
-            res =>
-              String(res.from) === String(currencyFrom) &&
-              String(res.to) === String(currencyTo) &&
-              setMainValueCurrency(res)
-          );
-        });
-      }, 1000);
-    }
+    clearInterval(INTERVAL_CONTACT);
+    INTERVAL_CONTACT = setInterval(async () => {
+      const { data } = await FetchContactApi({ currencyFrom, currencyTo });
+      data.result.filter(
+        res =>
+          String(res.from) === String(currencyFrom) &&
+          String(res.to) === String(currencyTo) &&
+          setMainValueCurrency(res)
+      );
+    }, 1000);
   }, [currencyFrom, currencyTo]);
+
   const getVisibleCurrencyFrom = () => {
     const normalizeFilterFrom = filterFrom.toLowerCase();
     const normalizeArray = currenciesArr.filter(({ code }) => {
@@ -70,13 +71,20 @@ export const App = () => {
     });
     return normalizeArray;
   };
+
   const getVisibleCurrencyTo = () => {
     const normalizeFilterTo = filterTo.toLowerCase();
     return currenciesArr.filter(currency =>
       currency.code.toLowerCase().includes(normalizeFilterTo)
     );
   };
-
+  useEffect(() => {
+    INTERVAL_GARANTEX = setInterval(async () => {
+      const { data } = await FetchGarantexApi();
+      setAsksGarantex(data.asks.splice(0, 20));
+      setBidsGarantex(data.bids.splice(0, 20));
+    }, 5000);
+  }, []);
   return (
     <>
       {/* Contact */}
@@ -121,7 +129,7 @@ export const App = () => {
                   type="text"
                   name="inputFrom"
                   id="inputFrom"
-                  autocomplete="off"
+                  autoComplete="off"
                   placeholder="RUB, USD..."
                   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                   onChange={handlerChangeInput}
@@ -141,7 +149,7 @@ export const App = () => {
                   name="inputTo"
                   id="inputTo"
                   onChange={handlerChangeInput}
-                  autocomplete="off"
+                  autoComplete="off"
                   placeholder="RUB, USD..."
                   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 />
@@ -160,68 +168,37 @@ export const App = () => {
       </div>
 
       <hr />
+      {/* (
+        <UpdateTime
+          propAsksGarantex={asksGarantex}
+          propBidsGarantex={bidsGarantex}
+        />
+      ) */}
 
+      {/* {asksGarantex && bidsGarantex ? (
+        <UpdateTime propsAsks={asksGarantex} propsBids={bidsGarantex} />
+      ) : (
+        console.log('govno')
+      )} */}
       {/* GARANTEX */}
-
-      <div className={s.divContainer} style={{ opacity: 0.2 }}>
+      <div className={s.divContainer}>
         <div className={s.divGarantexIMG}></div>
         <div className={s.divBox}>
           <h2>Завтра может сделаю "стаканы", если получится</h2>
         </div>
-        {/* <form className={s.form} onSubmit={handlerSumbit}>
-          <div className={s.divImg} />
 
-          <p className={s.text}>
-            {mainValueCurrency &&
-              ` ${
-                currenciesArr.find(
-                  curr => curr.number === mainValueCurrency.from && curr
-                ).code
-              } к ${
-                currenciesArr.find(
-                  curr => curr.number === mainValueCurrency.to && curr
-                ).code
-              } получаем +-${mainValueCurrency.rate} с комиссией +-${(
-                mainValueCurrency.rate +
-                mainValueCurrency.rate * (0.0061637 / 100) * 100
-              ).toFixed(2)}`}
-          </p>
-          <div className={s.containerFormSelect}>
-            <div className={s.formFrom}>
-              <label htmlFor="inputFrom" className={s.label}>
-                Из
-              </label>
-              <input
-                className={s.typeSearchInput}
-                type="text"
-                name="inputFrom"
-                id="inputFrom"
-                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                onChange={handlerChangeInput}
-              />
-
-              <select className={s.selectForm} name="selectFrom">
-                <SelectItem props={getVisibleCurrencyFrom()} />
-              </select>
-            </div>
-            <div className={s.formTo}>
-              <label htmlFor="inputTo" className={s.label}>
-                В
-              </label>
-              <input
-                className={s.typeSearchInput}
-                type="text"
-                name="inputTo"
-                id="inputTo"
-                onChange={handlerChangeInput}
-              />
-              <select className={s.selectForm} name="selectTo">
-                <SelectItem props={getVisibleCurrencyTo()} />
-              </select>
-            </div>
-          </div>
-          <div className={s.divBtn}></div>
-        </form> */}
+        <div className={s.tableContainer}>
+          <TableGarantex
+            props={asksGarantex}
+            title={'Продажа'}
+            name={'asksGarantex'}
+          />
+          <TableGarantex
+            props={bidsGarantex}
+            title={'Покупка'}
+            name={'bidsGarantex'}
+          />
+        </div>
       </div>
     </>
   );

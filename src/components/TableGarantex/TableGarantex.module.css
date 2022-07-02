@@ -1,0 +1,35 @@
+table {
+  border: 1px solid rgba(219, 219, 219, 0.568);
+}
+
+/* границы ячеек первого ряда таблицы */
+th {
+  border: 1px solid grey;
+}
+/* границы ячеек тела таблицы */
+td {
+  border: 1px solid grey;
+}
+
+.asks {
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) -10%,
+    rgba(245, 73, 94, 0.1) 0%
+  );
+  text-align: center;
+}
+.bids {
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) -10%,
+    rgba(52, 185, 143, 0.1) 0%
+  );
+  text-align: center;
+}
+.asks tr:nth-child(even) {
+  background-color: rgba(255, 0, 0, 0.123);
+}
+.bids tr:nth-child(even) {
+  background-color: rgba(52, 185, 143, 0.123);
+}

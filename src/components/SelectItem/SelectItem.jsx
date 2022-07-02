@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 const SelectItem = ({ props }) => {
   return (
     props &&

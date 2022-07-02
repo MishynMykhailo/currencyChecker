@@ -82,3 +82,8 @@
   background-position: left;
   height: 50px;
 }
+.tableContainer {
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+}
