@@ -54,7 +54,7 @@ const CurrencyForm = ({ onSubmit, mainValueCurrency }) => {
               currenciesArr.find(
                 curr => curr.number === mainValueCurrency.to && curr
               ).code
-            } получаем +-${mainValueCurrency.rate} с комиссией +-${(
+            } получаем +-${mainValueCurrency.rate} | с комиссией +-${(
               mainValueCurrency.rate +
               mainValueCurrency.rate * (0.0061637 / 100) * 100
             ).toFixed(2)}`

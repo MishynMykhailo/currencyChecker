@@ -10,7 +10,7 @@ const CurrencySelect = ({
     <>
       <div>
         <label htmlFor={name} className={s.label}>
-          Из
+          {name}
         </label>
         <input
           className={s.typeSearchInput}

@@ -1,12 +1,13 @@
 .divContactIMG {
-  background-image: url(../../contactLogo.svg);
+  background-image: url(../../contactLogo.png);
+  /* background-color: rgb(45, 54, 65); */
   background-repeat: no-repeat;
   background-size: contain;
   background-position: left;
   height: 70px;
 }
 .divGarantexIMG {
-  background-image: url(../../garantex.png);
+  background-image: url(../../garantex1.png);
   background-color: #262d34;
   background-repeat: no-repeat;
   background-size: contain;

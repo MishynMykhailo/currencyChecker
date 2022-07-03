@@ -24,7 +24,7 @@ export const App = () => {
   const [currencyFrom, setCurrencyFrom] = useState('643');
   const [currencyTo, setCurrencyTo] = useState('840');
   const [mainValueCurrency, setMainValueCurrency] = useState(null);
-
+  let INTERVAL_CONTACT = useRef(null);
   useEffect(() => {
     setInterval(async () => {
       const { data } = await FetchGarantexApi();
@@ -33,7 +33,6 @@ export const App = () => {
     }, 3000);
   }, []);
 
-  let INTERVAL_CONTACT = useRef(null);
   //Выполняет запрос при изменении Валют
   useEffect(() => {
     clearInterval(INTERVAL_CONTACT.current);
@@ -69,6 +68,7 @@ export const App = () => {
   return (
     <>
       {/* Contact */}
+
       <Section>
         <div className={s.divContactIMG} />
         <Container>
