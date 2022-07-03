@@ -1,53 +1,14 @@
 import s from './CurrencyForm.module.css';
-import { useEffect, useState, useRef } from 'react';
-import FetchContactApi from 'service/FetchContactApi';
+import { useState } from 'react';
+
 import CurrencySelect from 'components/CurrencySelect';
 import currencies from '../../service/currenciesID.json';
 import Loader from 'components/Loader';
-import { Notify } from 'notiflix';
 
-//Notify options
-Notify.init({
-  width: '300px',
-  position: 'right-bottom',
-  closeButton: false,
-  clickToClose: true,
-  timeout: 2000,
-});
-
-const CurrencyForm = () => {
+const CurrencyForm = ({ onSubmit, mainValueCurrency }) => {
   const [currenciesArr] = useState(currencies);
-  const [currencyFrom, setCurrencyFrom] = useState('643');
-  const [currencyTo, setCurrencyTo] = useState('840');
   const [filterFrom, setFilterFrom] = useState('');
   const [filterTo, setFilterTo] = useState('');
-  const [mainValueCurrency, setMainValueCurrency] = useState(null);
-  let INTERVAL_CONTACT = useRef(null);
-  //Выполняет запрос при изменении Валют
-  useEffect(() => {
-    clearInterval(INTERVAL_CONTACT.current);
-    INTERVAL_CONTACT.current = setInterval(async () => {
-      const { data } = await FetchContactApi({ currencyFrom, currencyTo });
-      data.result.filter(
-        res =>
-          String(res.from) === String(currencyFrom) &&
-          String(res.to) === String(currencyTo) &&
-          setMainValueCurrency(res)
-      );
-    }, 1000);
-  }, [currencyFrom, currencyTo]);
-
-  //Submit - отправка формы
-  const handlerSubmit = e => {
-    e.preventDefault();
-    const { selectFrom, selectTo } = e.target.elements;
-    if (selectFrom.value === selectTo.value) {
-      return Notify.failure('Одинаковая валюта, я так не умею😢');
-    }
-
-    setCurrencyFrom(selectFrom.value);
-    setCurrencyTo(selectTo.value);
-  };
 
   //Записывает изменения в Filter,для фильтрации валют в Input
   const handlerChangeInput = e => {
@@ -79,9 +40,10 @@ const CurrencyForm = () => {
       currency.code.toLowerCase().includes(normalizeFilterTo)
     );
   };
+
   return (
     <>
-      <form className={s.form} onSubmit={handlerSubmit}>
+      <form className={s.form} onSubmit={onSubmit}>
         <p className={s.text}>
           {mainValueCurrency ? (
             ` ${

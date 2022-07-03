@@ -3,8 +3,9 @@ body {
   margin: 0;
   background-image: linear-gradient(
     to right,
-    rgba(80, 80, 80, 0.616),
-    rgba(138, 85, 15, 0.445)
+    rgba(80, 80, 80, 0.836),
+    rgba(129, 77, 8, 0.438),
+    rgba(80, 80, 80, 0.836)
   );
   background-color: rgb(231, 236, 242);
   font-family: 'Rubik', sans-serif;
