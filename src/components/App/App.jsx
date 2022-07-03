@@ -75,6 +75,8 @@ export const App = () => {
           <CurrencyForm
             onSubmit={handlerSubmit}
             mainValueCurrency={mainValueCurrency}
+            currencyFrom={currencyFrom}
+            currencyTo={currencyTo}
           />
         </Container>
       </Section>

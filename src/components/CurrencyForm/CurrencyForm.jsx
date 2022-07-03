@@ -5,7 +5,12 @@ import CurrencySelect from 'components/CurrencySelect';
 import currencies from '../../service/currenciesID.json';
 import Loader from 'components/Loader';
 
-const CurrencyForm = ({ onSubmit, mainValueCurrency }) => {
+const CurrencyForm = ({
+  onSubmit,
+  mainValueCurrency,
+  currencyFrom,
+  currencyTo,
+}) => {
   const [currenciesArr] = useState(currencies);
   const [filterFrom, setFilterFrom] = useState('');
   const [filterTo, setFilterTo] = useState('');
@@ -62,17 +67,20 @@ const CurrencyForm = ({ onSubmit, mainValueCurrency }) => {
             <Loader />
           )}
         </p>
-        <span
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            color: 'red',
-            opacity: 0.4,
-            marginBottom: 15,
-          }}
-        >
-          Погрешность RUB/USD = +-0.10 - 0.12
-        </span>
+        {currencyFrom === '643' && currencyTo === '840' && (
+          <span
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              color: 'red',
+              opacity: 0.4,
+              marginBottom: 15,
+            }}
+          >
+            Погрешность RUB/USD = +-0.10 - 0.12
+          </span>
+        )}
+
         <div className={s.containerFormSelect}>
           <CurrencySelect
             name={'from'}
