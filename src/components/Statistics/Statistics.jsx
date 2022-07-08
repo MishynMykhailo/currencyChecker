@@ -6,7 +6,7 @@ const Statistics = ({ props, mainValueNormalize }) => {
     let markup;
     if (variables) {
       switch (true) {
-        case variables >= 2:
+        case variables > 1.9:
           markup = (
             <span
               className={s.statistics}
@@ -18,7 +18,7 @@ const Statistics = ({ props, mainValueNormalize }) => {
             </span>
           );
           break;
-        case 1.5 < variables < 2:
+        case 1.5 < variables && variables < 1.9:
           markup = (
             <span
               className={s.statistics}
