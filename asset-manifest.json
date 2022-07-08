@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/currencyChecker/static/css/main.6f56360c.css",
-    "main.js": "/currencyChecker/static/js/main.72b4437c.js",
+    "main.css": "/currencyChecker/static/css/main.87cde623.css",
+    "main.js": "/currencyChecker/static/js/main.4f68ef00.js",
     "static/media/contactLogo.png": "/currencyChecker/static/media/contactLogo.f53528e479e8e5df368c.png",
     "index.html": "/currencyChecker/index.html",
-    "main.6f56360c.css.map": "/currencyChecker/static/css/main.6f56360c.css.map",
-    "main.72b4437c.js.map": "/currencyChecker/static/js/main.72b4437c.js.map"
+    "main.87cde623.css.map": "/currencyChecker/static/css/main.87cde623.css.map",
+    "main.4f68ef00.js.map": "/currencyChecker/static/js/main.4f68ef00.js.map"
   },
   "entrypoints": [
-    "static/css/main.6f56360c.css",
-    "static/js/main.72b4437c.js"
+    "static/css/main.87cde623.css",
+    "static/js/main.4f68ef00.js"
   ]
 }
