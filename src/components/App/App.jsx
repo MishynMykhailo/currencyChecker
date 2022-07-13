@@ -25,6 +25,10 @@ export const App = () => {
   const [currencyTo, setCurrencyTo] = useState('840');
   const [mainValueCurrency, setMainValueCurrency] = useState(null);
   let INTERVAL_CONTACT = useRef(null);
+
+  // 0.0061637
+  const COMMISSION = 0.024607;
+
   useEffect(() => {
     setInterval(async () => {
       const { data } = await FetchGarantexApi();
@@ -62,7 +66,7 @@ export const App = () => {
   if (mainValueCurrency) {
     mainValueNormalize = (
       mainValueCurrency.rate +
-      mainValueCurrency.rate * (0.0061637 / 100) * 100
+      mainValueCurrency.rate * (COMMISSION / 100) * 100
     ).toFixed(2);
   }
   return (
@@ -77,6 +81,7 @@ export const App = () => {
             mainValueCurrency={mainValueCurrency}
             currencyFrom={currencyFrom}
             currencyTo={currencyTo}
+            COMMISSION={COMMISSION}
           />
         </Container>
       </Section>

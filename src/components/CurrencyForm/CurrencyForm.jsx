@@ -5,13 +5,13 @@ import CurrencySelect from 'components/CurrencySelect';
 import currencies from '../../service/currenciesID.json';
 import Loader from 'components/Loader';
 // 0.0061637
-const COMMISSION = 0.024607;
 
 const CurrencyForm = ({
   onSubmit,
   mainValueCurrency,
   currencyFrom,
   currencyTo,
+  COMMISSION,
 }) => {
   const [currenciesArr] = useState(currencies);
   const [filterFrom, setFilterFrom] = useState('');
