@@ -4,6 +4,8 @@ import { useState } from 'react';
 import CurrencySelect from 'components/CurrencySelect';
 import currencies from '../../service/currenciesID.json';
 import Loader from 'components/Loader';
+// 0.0061637
+const COMMISSION = 0.024607;
 
 const CurrencyForm = ({
   onSubmit,
@@ -61,7 +63,7 @@ const CurrencyForm = ({
               ).code
             } получаем +-${mainValueCurrency.rate} | с комиссией +-${(
               mainValueCurrency.rate +
-              mainValueCurrency.rate * (0.0061637 / 100) * 100
+              mainValueCurrency.rate * (COMMISSION / 100) * 100
             ).toFixed(2)}`
           ) : (
             <Loader />
